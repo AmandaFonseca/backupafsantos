@@ -29,9 +29,20 @@ class DeleteClienteAPIView(DestroyAPIView):
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    data={}
+    data['db'] = Cliente.objects.all()
+    return render(request, 'main.html',data)
+
 
 def form(request):
     data = {}
     data['form'] = ClienteForm()
     return render(request, 'form.html', data)
+
+def create(request):
+    form = CarrosForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+
+
