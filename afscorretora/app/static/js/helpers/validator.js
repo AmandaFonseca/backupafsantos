@@ -46,9 +46,19 @@ function verificarCPF(c){
     }
 }
 
+function validatePhone (phone) {
+    var regex = new RegExp('^((1[1-9])|([2-9][0-9]))((3[0-9]{3}[0-9]{4})|(9[0-9]{3}[0-9]{5}))$');
+    return regex.test(phone);
+}
+
+function validatePhone (phone) {
+    var regex = new RegExp('^((1[1-9])|([2-9][0-9]))((3[0-9]{3}[0-9]{4})|(9[0-9]{3}[0-9]{5}))$');
+    return regex.test(phone);
+}
+
 (function(win,doc){
     'use strict';
-
+    /*Limpa formulario*/
     let submit_create = document.querySelector('.btn-success');
     submit_create.addEventListener ('keypress', (event) => {
         let form_create = document.querySelector('.form');
@@ -63,6 +73,9 @@ function verificarCPF(c){
 
     let cpf = document.querySelector('#id_cpf');
     let cpf_label = document.querySelector('.cpf_valido');
+    let  id_telefone = document.querySelector('#id_telefone');
+    let id_telefone_label = document.querySelector('.celular_valido');
+    console.log(id_telefone_label)
 
     cpf.addEventListener ('blur', (event) => {
         var aux = cpf.value;
@@ -76,5 +89,21 @@ function verificarCPF(c){
             cpf_label.classList.add("ative");
         }
     });
+
+    id_telefone.addEventListener ('blur', (event) => {
+        var aux = id_telefone.value;
+        const strNum = aux.replace(/[^0-9]/g, '')
+        var result = validatePhone(strNum);
+        console.log(result);
+        if(result){
+            id_telefone_label.classList.remove("ative");
+            id_telefone_label.classList.add("inative");
+        }else{
+            id_telefone_label.classList.remove("inative");
+            id_telefone_label.classList.add("ative");
+        }
+    });
+
+
 
 })(window,document);

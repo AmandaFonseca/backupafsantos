@@ -36,11 +36,11 @@
 .center,.card-header h3 {
     text-align: center;
 }
-label.bx--label.cpf_valido.inative {
-    color: #525252;
+.inative {
+    color: #bf2d2d;
     display: none;
 }
-label.bx--label.cpf_valido.ative {
+.ative {
     display: inline-block;
     color: #bf2d2d;
 }
